@@ -1,0 +1,18 @@
+body{
+	background-color: #1E2A2D;
+	color: #F1EECE;
+}
+#mainLogin{
+	background-color: #607D8B;
+	border-radius: 2em;
+}
+#mainHeader{
+	background-color: #B42;
+}
+#help_login{
+	background-color: #208075;
+}
+label
+{
+	width: 150px;
+}
