@@ -109,7 +109,7 @@ public class UserDAO extends MyDao{
 
 	@Override
 	public void identifyMe() throws BDDException {
-		System.out.println( "userName, userPassword : "+ userName +", "+ userPassword);
+		
 		int errorCode = 10000;
 		
 		try{
@@ -117,27 +117,23 @@ public class UserDAO extends MyDao{
 			String sql = "{call ps_identifyuser(?,?,?,?)}";
 			CallableStatement call = ConnexionBDD.getConnexion().prepareCall(sql);
 			call.setString(1, userName);
-			System.out.println("call du nom : "+userName);
+			
 			call.setString(2, userPassword);
-			System.out.println("call du password : "+userPassword);
+			
 			call.registerOutParameter(3, Types.INTEGER);
 			call.registerOutParameter(4, Types.INTEGER);
 			call.execute();
 			errorCode = call.getInt("ret");
 			
-			System.out.println("--------------------- MySQLUserDAO : debut identifyUser ------------------------");
-			System.out.println("code erreur ==> " + errorCode);
-			
 			if(errorCode==0) {
 
 				call.getMoreResults(Statement.KEEP_CURRENT_RESULT);
 				userId = call.getInt(4);
-				System.out.println("user ID     ==> " + userId);
+
 			}
 			else {
-				System.out.println("ERROR ! call.execute is false !");
+				//TODO faire une remonté d'erreur via un futur beanError
 			}
-			System.out.println("--------------------- MySQLUserDAO : fin identifyUser ------------------------");
 
 			if (errorCode == 10000) throw new BDDException("ExceptionSQL dans la procedure",10000);
 		}

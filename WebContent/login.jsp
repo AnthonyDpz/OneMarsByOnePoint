@@ -12,15 +12,16 @@
 <!-- ------------------------ Visiteur ------------------------ -->
 <c:if test="${not userBean.status}">
 	<c:out value="Bonjour, Visiteur." />
+	<br>
 	<form action="Home" method="post">
 
 		<label for="userLogin">Login :</label>
-		<input type="text" name="userLogin" id="userLogin" value="Anthony" size="10" maxlength="10">
+		<input type="text" name="userLogin" id="userLogin" value="Login" size="10" maxlength="10">
 		<c:out value="${userBean.getErrors()['userLogin']}" />
 		<br>
 		
 		<label for="userPassword">Password :</label>
-		<input type="password" name="userPassword" id="userPassword" value="5Tr!d3r2" size="10" maxlength="20">
+		<input type="password" name="userPassword" id="userPassword" value="Password" size="10" maxlength="20">
 		<c:out value="${userBean.getErrors()['userPassword']}" />
 		<br>
 		
